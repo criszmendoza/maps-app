@@ -3,7 +3,7 @@ import { PlacesState } from "./state";
 import { StateInterface } from '../index'
 
 const actions: ActionTree<PlacesState, StateInterface> = {
-	async getInitialLocation({ commit }){
+	getInitialLocation({ commit }){
 		// TODO: colocar loading
 
 		navigator.geolocation.getCurrentPosition(

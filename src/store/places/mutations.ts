@@ -2,9 +2,9 @@ import { MutationTree } from 'vuex'
 import { PlacesState } from './state'
 
 const mutation: MutationTree<PlacesState> = {
-	setLngLat(state: PlacesState, coords){
-		console.log(coords);
-		state.userLocation = coords
+	setLngLat(state: PlacesState, coords: GeolocationCoordinates){
+		const {latitude, longitude} = coords
+		state.userLocation = [longitude, latitude]
 		state.isLoading = false
 	}
 }

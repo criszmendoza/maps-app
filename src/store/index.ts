@@ -1,13 +1,13 @@
 import { createStore } from 'vuex'
-import exampleModule from './modules-template/index'
-import { ExampleStateInterface } from './modules-template/state'
+import placesModule from './places/index'
+import { PlacesState } from './places/state';
 
 export interface StateInterface {
-	example: ExampleStateInterface
+	places: PlacesState
 }
 
 export default createStore <StateInterface>({
 	modules: {
-		example: exampleModule
+		places: placesModule
 	}
 })

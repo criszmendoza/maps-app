@@ -1,9 +1,10 @@
 import { MutationTree } from 'vuex'
 import { MapState } from './state'
+import mapboxgl from 'mapbox-gl';
 
 const mutation: MutationTree<MapState> = {
-	someMutation(){
-		return
+	setMap(state, map: mapboxgl.Map){
+		state.map = map
 	}
 }
 

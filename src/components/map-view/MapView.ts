@@ -1,11 +1,13 @@
 import usePlacesStore from '@/composables/usePlacesStore';
 import { defineComponent, onMounted, ref, watch } from 'vue';
 import mapboxgl from 'mapbox-gl'
+import useMapStore from '../../composables/useMapStore';
 
 export default defineComponent({
 	name: 'MapView',
 	setup(){
 		const {userLocation, isUserLocationReady} = usePlacesStore()
+		const {  setMap } = useMapStore()
 		const mapElement = ref<HTMLDivElement>()
 
 		const initMap = async()=>{
@@ -34,7 +36,7 @@ export default defineComponent({
 				.setPopup(myLocationPopup)
 				.addTo(map)
 
-			return map
+			setMap(map)
 		}
 
 		onMounted(()=>{

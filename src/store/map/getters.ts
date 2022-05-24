@@ -3,8 +3,8 @@ import { MapState } from './state'
 import { StateInterface } from '../index'
 
 const getters: GetterTree<MapState, StateInterface> = {
-	someGetter(){
-		return
+	isMapReady(state){
+		return !!state.map
 	}
 }
 

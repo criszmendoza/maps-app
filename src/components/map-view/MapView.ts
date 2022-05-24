@@ -15,19 +15,30 @@ export default defineComponent({
 
 			await Promise.resolve()
 
-			return new mapboxgl.Map({
+			const map = new mapboxgl.Map({
 				container: mapElement.value, // container ID
-				style: 'mapbox://styles/mapbox/streets-v11', // style URL
+				style: 'mapbox://styles/mapbox/light-v10', // style URL
 				center: userLocation.value, // starting position [lng, lat]
 				zoom: 15 // starting zoom
 			});
+
+			const myLocationPopup = new mapboxgl.Popup()
+				.setLngLat(userLocation.value)
+				.setHTML(`
+					<h4>Aquí estoy</h4>
+					<p>${ userLocation.value }</p>
+				`)
+
+			new mapboxgl.Marker()
+				.setLngLat(userLocation.value)
+				.setPopup(myLocationPopup)
+				.addTo(map)
+
+			return map
 		}
 
 		onMounted(()=>{
-			if (isUserLocationReady.value) return initMap()
-
-			console.log('No tengo localización aún');
-			
+			if (isUserLocationReady.value) return initMap()			
 		})
 
 		watch(isUserLocationReady,(newValue)=>{

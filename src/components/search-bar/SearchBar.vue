@@ -1,7 +1,7 @@
 <script lang='ts' src='./SearchBar.ts'/>
 <template>
 	<div class="searchbar-container">
-		<input type="text" class="form-control" placeholder="Buscar lugares...">
+		<input type="text" class="form-control" placeholder="Buscar lugares..." v-model="searchTerm">
 		<SearchResult/>
 	</div>
 

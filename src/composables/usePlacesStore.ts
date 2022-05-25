@@ -16,7 +16,9 @@ const usePlacesStore = () => {
 		isLoading: computed(()=>store.state.places.isLoading),
 		userLocation: computed(()=>store.state.places.userLocation),
 
-		isUserLocationReady: computed(() => store.getters['places/isUserLocationReady'])
+		isUserLocationReady: computed(() => store.getters['places/isUserLocationReady']),
+
+		searchPlacesByTerm: (query:string)=> store.dispatch('places/searchPlacesByTerm', query)
 	}
 }
 

@@ -9,6 +9,10 @@ const actions: ActionTree<PlacesState, StateInterface> = {
 		navigator.geolocation.getCurrentPosition(
 			({ coords })=> commit('setLngLat', coords),(error) => console.log(error)
 		)
+	},
+	async searchPlacesByTerm(_, query:string){
+		console.log(`vuex: ${query}`);
+		
 	}
 }
 

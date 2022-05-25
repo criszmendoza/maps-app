@@ -8,11 +8,20 @@
 </div>
 
 <ul class="list-group mt-3" v-else-if="places.length > 0">
-	<li class="list-group-item list-group-item-action text-start" v-for="place in places" :key='place.id'>
+	<li 
+		class="list-group-item list-group-item-action text-start"
+		:class="{'active': activePlace === place.id}" 
+		v-for="place in places" 
+		:key='place.id' 
+		@click="onPlaceClicked(place)">
 		<h5>{{ place.text_es }}</h5>
 		<p>{{ place.place_name_es }}</p>
 		<div class="text-end">
-			<button class="btn btn-outline-primary btn-sm">Direcciones</button>
+			<button 
+			class="btn btn-sm" 
+			:class="(activePlace === place.id ? 'btn-outline-light' : 'btn-outline-primary')" 
+			>
+			Direcciones</button>
 		</div>
 	</li>
 </ul>

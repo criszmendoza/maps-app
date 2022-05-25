@@ -1,9 +1,17 @@
 import { defineComponent } from 'vue'
+import usePlacesStore from '../../composables/usePlacesStore';
 
 export default defineComponent({
 	name: 'SearchResult',
 	components:{},
 	setup() {
-		return {}
+
+		const { places,  isLoadingPlaces} = usePlacesStore()
+
+
+		return { 
+			places,  
+			isLoadingPlaces
+		}
 	},
 })

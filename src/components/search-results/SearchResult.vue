@@ -20,6 +20,7 @@
 			<button 
 			class="btn btn-sm" 
 			:class="(activePlace === place.id ? 'btn-outline-light' : 'btn-outline-primary')" 
+			@click.self="getRouteDirections(place)"
 			>
 			Direcciones</button>
 		</div>

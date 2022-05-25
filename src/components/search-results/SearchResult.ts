@@ -8,8 +8,8 @@ export default defineComponent({
 	components:{},
 	setup() {
 
-		const { places,  isLoadingPlaces} = usePlacesStore()
-		const { map, setPlaceMarkers } = useMapStore()
+		const { places,  isLoadingPlaces, userLocation} = usePlacesStore()
+		const { map, setPlaceMarkers, getRouteBetweenPoints } = useMapStore()
 		const activePlace = ref('')
 		
 
@@ -24,6 +24,7 @@ export default defineComponent({
 			activePlace,
 
 			onPlaceClicked(place:Feature){
+
 				activePlace.value = place.id
 				const [lng, lat ] = place.center
 
@@ -31,6 +32,18 @@ export default defineComponent({
 					center: [lng, lat],
 					zoom:14
 				})
+			},
+			getRouteDirections(place:Feature){
+				if (!userLocation.value) return
+
+				const [lng, lat ] = place.center
+				const [startLng, startLat] = userLocation.value
+
+				const start =[startLng, startLat]
+				const end = [lng, lat]
+
+				getRouteBetweenPoints(start, end)
+
 			}
 		}
 	},

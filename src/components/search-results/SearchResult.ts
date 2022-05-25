@@ -1,5 +1,5 @@
 import useMapStore from '@/composables/useMapStore';
-import { defineComponent, ref } from 'vue'
+import { defineComponent, ref, watch } from 'vue';
 import usePlacesStore from '../../composables/usePlacesStore';
 import { Feature } from '../../interfaces/places';
 
@@ -9,8 +9,13 @@ export default defineComponent({
 	setup() {
 
 		const { places,  isLoadingPlaces} = usePlacesStore()
-		const { map } = useMapStore()
+		const { map, setPlaceMarkers } = useMapStore()
 		const activePlace = ref('')
+		
+
+		watch(places, (newPlaces)=>{
+			setPlaceMarkers(newPlaces)
+		})
 
 
 		return { 

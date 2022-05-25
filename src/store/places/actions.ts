@@ -24,7 +24,7 @@ const actions: ActionTree<PlacesState, StateInterface> = {
 		try {
 			const { data } = await searchApi.get<PlacesResponse>(`/${query}.json`,{
 				params:{
-					proximity: state.userLocation?.join(',')
+					// proximity: state.userLocation?.join(',')
 				}
 			})
 
